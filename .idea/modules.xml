@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/chenx-pro-server/chenx-pro-server.iml" filepath="$PROJECT_DIR$/chenx-pro-server/chenx-pro-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/chenx-pro-client.iml" filepath="$PROJECT_DIR$/.idea/chenx-pro-client.iml" />
     </modules>
   </component>
 </project>

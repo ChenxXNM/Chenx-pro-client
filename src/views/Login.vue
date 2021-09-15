@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import {captcha, login} from "../api/admin";
+
 export default {
     name: "Login",
     methods: {
@@ -38,32 +40,31 @@ export default {
                 if (!valid) return false
                 let item = localStorage.getItem("token");
                 this.user.token = item
+              login(this.user).then(res=>{
+                console.log(res.data);
+                if (res.data.success) {
+                  // 跳转到首页
+                  this.$router.push("/")
+                  localStorage.username = res.data.username
+                } else {
+                  this.$message.error("您输入的信息有误，请重新输入")
+                }
+              }).catch(error=>{
+                this.$message.error("您输入的信息有误，请重新输入")
+                console.log(error)
+              })
                 // 表单规则验证通过后发送请求  进行登录
-                this.$axios.post("http://localhost:8989/admin/login", this.user).then(res => {
-                    console.log(res.data);
-                    if (res.data.success) {
-                        // 跳转到首页
-                        this.$router.push("/")
-                        localStorage.username = res.data.username
-                    } else {
-                        this.$message.error("您输入的信息有误，请重新输入")
-                    }
-                }).catch(error => {
-                    this.$message.error("您输入的信息有误，请重新输入")
-                    console.log(error);
-                })
             })
         },
         // 获取验证码
         get_captcha() {
-            this.$axios.get("http://localhost:8989/admin/captcha").then(res => {
-                console.log(res.data.code);
-                this.url = res.data.code
-                // 将验证码的key保存到localStorage
-                localStorage.token = res.data.token
-            }).catch(error => {
-                console.log(error);
-            })
+          captcha().then(res=>{
+            this.url = res.data.code
+            // 将验证码的key保存到localStorage
+            localStorage.token = res.data.token
+          }).catch(error=>{
+            console.log(error);
+          })
         },
     },
     created() {

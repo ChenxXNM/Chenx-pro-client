@@ -17,8 +17,21 @@ const routes = [
     redirect: "/home",
     // 子路由
     children: [
-      {name: "Home",path: "/home",component: () => import("../views/Home")},
-      {name: "Category", path: "/category",component: () => import("../views/Category")},
+      {
+        name: "Home",
+        path: "/home",
+        component: () => import("../views/Home")
+      },
+      {
+        name: "Category",
+        path: "/category",
+        component: () => import("../views/Category")
+      },
+      {
+        name: "User",
+        path: "/user",
+        component: () => import("../views/User")
+      },
     ]
   }
 ]
