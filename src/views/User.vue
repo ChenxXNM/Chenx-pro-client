@@ -31,9 +31,12 @@
           </el-table-column>
           <el-table-column prop="password" label="密码"></el-table-column>
           <el-table-column fixed="right" label="操作" width="100">
+
             <template slot-scope="scope">
-              <el-button type="text" size="small" @click="deleteUser(scope.row)">删除</el-button>
-              <el-button type="text" size="small" @click="handleUpdate(scope.row.id)">修改</el-button>
+              &nbsp;&nbsp;&nbsp;
+              <i class="el-icon-delete" size="small" @click="deleteUser(scope.row)"></i>&nbsp;
+              |&nbsp;
+              <i class="el-icon-edit" size="small" @click="handleUpdate(scope.row.id)"></i>
             </template>
           </el-table-column>
         </el-table>
@@ -139,14 +142,12 @@ export default {
     },
 
     get_user_list() {
-      console.log(this.user.username+"123");
       // 获取用户时需要向后端传递页码
       let params = {page: this.page,name:this.username}
 
       userList(params).then(res => {
         this.total = res.data.total
         this.usersList = res.data.users
-        console.log(this.usersList)
       }).catch(error => {
         console.log(error);
       })

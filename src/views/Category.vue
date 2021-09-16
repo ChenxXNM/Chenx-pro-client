@@ -81,7 +81,6 @@ export default {
     getCategory() {
       //  请求
       categorys().then(res => {
-        console.log(res.data);
         this.data = res.data
       })
     },
@@ -93,7 +92,6 @@ export default {
     add() {
       if (this.category.name) {
         addCategory(this.category).then(res => {
-          console.log(res.data);
           // 清空文本框
           this.category.name = ""
           // 保存成功后关闭添加框

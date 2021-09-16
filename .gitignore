@@ -12,3 +12,12 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+.gitignore
+.babelrc
+.editorconfig
+.postcssrc.js
+.idea
+index.html
+package-lock.json
+README.md
+package.json
